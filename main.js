@@ -33,13 +33,13 @@ function playRound(playerSelection,computerSelection){
 }
 
 
-function game(){
+function game(e){
     let playerScore = 0;
     let computerScore = 0;
     let getPlayerChoice;
     while(playerScore < 5 && computerScore < 5)
     {
-    getPlayerChoice  = prompt("Choose: Rock, Paper, Scissors");
+    getPlayerChoice  = e.target.firstChild.textContent;
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
     console.log(roundResult)
     let lookForWin = "You win!";
@@ -54,8 +54,16 @@ function game(){
     console.log(computerScore);
     }
     if(playerScore === 5){
-        console.log("Congratulations, you won!")
+        return("Congratulations, you won!")
     }else if(computerScore === 5){
-        console.log("Sorry Loser");
+        return("You lose, you can try again dumdum :(");
     }
 }
+
+window.addEventListener('click',logText);
+
+function logText(e){
+    if(!e.target.classList.contains('button')) return;
+    console.log(e.target.id);
+}
+
