@@ -6,7 +6,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection,computerSelection){
-    
+    console.log(`Computer chose: ${computerSelection}`);
     playerSelection = playerSelection.toLowerCase();
     let resultText = "";
 
