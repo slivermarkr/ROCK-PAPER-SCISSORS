@@ -10,7 +10,7 @@ function playRound(playerSelection,computerSelection){
     let resultText = "";
 
     if(playerSelection === computerSelection){
-        
+
         resultText = "Its a TIE!";
         return resultText;
     }
@@ -29,4 +29,12 @@ function playRound(playerSelection,computerSelection){
         resultText = `You lose, '${computerSelection.toUpperCase()}' beats '${playerSelection.toUpperCase()}'`
         return resultText;
     }
+}
+
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    let getPlayerChoice = prompt("Rock, paper, scissors? ");
+    let roundWinner = playRound(getPlayerChoice,getComputerChoice())
+    return roundWinner;
 }
