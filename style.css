@@ -1,0 +1,31 @@
+.player-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.display-choice{
+    font-size: 30px;
+}
+.text{
+    font-size: 50px;
+}
+.computer-side {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+input {
+    font-size: 20px;
+    margin: 30px;
+}
