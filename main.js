@@ -39,7 +39,7 @@ function game(){
     let getPlayerChoice;
     while(playerScore < 5 && computerScore < 5)
     {
-    getPlayerChoice = prompt("Choose: Rock, Paper, Scissors");
+    getPlayerChoice  = prompt("Choose: Rock, Paper, Scissors");
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
     console.log(roundResult)
     let lookForWin = "You win!";
