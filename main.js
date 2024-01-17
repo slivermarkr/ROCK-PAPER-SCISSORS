@@ -31,13 +31,15 @@ function playRound(playerSelection,computerSelection){
         return resultText;
     }
 }
-let getPlayerChoice = "rock"
+
 
 function game(){
     let playerScore = 0;
     let computerScore = 0;
+    let getPlayerChoice;
     while(playerScore < 5 && computerScore < 5)
     {
+    getPlayerChoice = prompt("Choose: Rock, Paper, Scissors");
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
     console.log(roundResult)
     let lookForWin = "You win!";
