@@ -1,5 +1,4 @@
-let playerScore = 0;
-let computerScore = 0;
+
 function getComputerChoice(){
     let choices = ["rock","paper","scissors"];
     let random = Math.floor(Math.random()*3);
@@ -35,6 +34,10 @@ function playRound(playerSelection,computerSelection){
 let getPlayerChoice = "rock"
 
 function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    while(playerScore < 5 && computerScore < 5)
+    {
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
     console.log(roundResult)
     let lookForWin = "You win!";
@@ -47,4 +50,5 @@ function game(){
     }
     console.log(playerScore);
     console.log(computerScore);
+    }
 }
