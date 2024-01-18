@@ -1,3 +1,9 @@
+const counterContainer = document.querySelector('.counter-container');
+const resultDisplay = document.querySelector('.result-text');
+const displayComputerChoice = document.querySelector(".computer-choice");
+const headerChange = document.querySelector('.text');
+const btns = document.querySelector('.buttons');
+
 
 function getComputerChoice(){
     let choices = ["rock","paper","scissors"];
@@ -7,11 +13,8 @@ function getComputerChoice(){
 
 function playRound(playerSelection,computerSelection,){
     
-    const displayComputerChoice = document.querySelector(".computer-choice");
-    
    displayComputerChoice.textContent = `Computer chose: '${computerSelection.toUpperCase()}'`;
     
- 
     playerSelection = playerSelection.toLowerCase();
     let resultText = "";
 
@@ -48,8 +51,7 @@ let computerScore = 0;
 function game(e){
     if(!e.target.classList.contains('button')) return;
     e.target.classList.add('clicked');
-    const counterContainer = document.querySelector('.counter-container');
-    const resultDisplay = document.querySelector('.result-text');
+
 
     let getPlayerChoice  = e.target.id;
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
@@ -58,10 +60,7 @@ function game(e){
     resultDisplay.textContent = `${roundResult}`;
 
     let winner = "";
-    const btns = document.querySelector('.buttons');
     let winOrLose = document.querySelector('.winlose');
-    const headerChange = document.querySelector('.text');
-
     if(playerScore === 5){
 
         winOrLose.textContent = "You won the Game! Press F5 to play again";
@@ -92,7 +91,7 @@ function logText(e){
 }
 function removeHighlight(event){
     if(!event.target.classList.contains('button')) return;
-    const currentButton = document.querySelector(`button[data-type=${event.target.id}]`);
+    const currentButton = document.querySelector(`button[data-type=${event.target.id}]`)
 
      currentButton.classList.remove('clicked');
     
