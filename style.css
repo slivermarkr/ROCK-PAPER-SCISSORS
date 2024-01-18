@@ -12,14 +12,6 @@
 .text{
     font-size: 50px;
 }
-.computer-side {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
 
 li {
     list-style-type: none;
@@ -28,4 +20,19 @@ li {
 input {
     font-size: 20px;
     margin: 30px;
+}
+.buttons,
+.computer-choice,
+.counter-container,
+.result-text {
+    margin: 20px;
+}
+
+.clicked{
+    background-color: orangered;
+    font-size: 20px;
+}
+.buttons{
+    display: flex;
+    gap: 20px;
 }

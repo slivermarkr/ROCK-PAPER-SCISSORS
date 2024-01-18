@@ -5,8 +5,13 @@ function getComputerChoice(){
     return choices[random];
 }
 
-function playRound(playerSelection,computerSelection){
-    console.log(`Computer chose: ${computerSelection}`);
+function playRound(playerSelection,computerSelection,){
+    
+    const displayComputerChoice = document.querySelector(".computer-choice");
+    
+   displayComputerChoice.textContent = `Computer chose: '${computerSelection.toUpperCase()}'`;
+    
+ 
     playerSelection = playerSelection.toLowerCase();
     let resultText = "";
 
@@ -21,6 +26,7 @@ function playRound(playerSelection,computerSelection){
     (playerSelection === "scissors" && computerSelection === "paper")){
 
         resultText = `You win! '${playerSelection.toUpperCase()}' beats '${computerSelection.toUpperCase()}'` ;
+        playerScore++;
         return resultText;
     }
     if((computerSelection === "rock" && playerSelection === "scissors") ||
@@ -28,42 +34,68 @@ function playRound(playerSelection,computerSelection){
     (computerSelection === "scissors" && playerSelection === "paper")){
 
         resultText = `You lose, '${computerSelection.toUpperCase()}' beats '${playerSelection.toUpperCase()}'`
+        computerScore++
         return resultText;
     }
+
 }
 
+
+
+let playerScore = 0;
+let computerScore = 0;
 
 function game(e){
-    let playerScore = 0;
-    let computerScore = 0;
-    let getPlayerChoice;
-    while(playerScore < 5 && computerScore < 5)
-    {
-    getPlayerChoice  = e.target.firstChild.textContent;
+    if(!e.target.classList.contains('button')) return;
+    e.target.classList.add('clicked');
+    const counterContainer = document.querySelector('.counter-container');
+    const resultDisplay = document.querySelector('.result-text');
+
+    let getPlayerChoice  = e.target.id;
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
     console.log(roundResult)
-    let lookForWin = "You win!";
-    let lookForLose = "You lose";
-    if(roundResult.includes(lookForWin)){
-        playerScore++;
-    }
-    else if( roundResult.includes(lookForLose)){
-        computerScore++
-    }
-    console.log(playerScore);
-    console.log(computerScore);
-    }
+    counterContainer.textContent = ` You Score: ${playerScore} || Computer Score: ${computerScore}`;
+    resultDisplay.textContent = `${roundResult}`;
+
+    let winner = "";
+    const btns = document.querySelector('.buttons');
+    let winOrLose = document.querySelector('.winlose');
+    const headerChange = document.querySelector('.text');
+
     if(playerScore === 5){
-        return("Congratulations, you won!")
-    }else if(computerScore === 5){
-        return("You lose, you can try again dumdum :(");
+
+        winOrLose.textContent = "You won the Game! Press F5 to play again";
+        btns.style.display = "none";
+        winOrLose.style.color = 'green';
+        winOrLose.style.fontSize = '40px'
+        headerChange.firstElementChild.textContent = "WINNER!"
+        headerChange.firstElementChild.style.backgroundColor = "green";
+    } else if (computerScore === 5){
+
+        btns.style.display = "none";
+        winOrLose.textContent = "You lose the game, Press F5 to play again";
+        winOrLose.style.color = 'red';
+        winOrLose.style.fontSize = '40px';
+        headerChange.firstElementChild.textContent = "LOSER!"
+        headerChange.firstElementChild.style.backgroundColor = "red"
     }
+    
 }
 
-window.addEventListener('click',logText);
+
+
+window.addEventListener('click',game);
 
 function logText(e){
     if(!e.target.classList.contains('button')) return;
-    console.log(e.target.id);
+    console.log(e.target);
+}
+function removeHighlight(event){
+    if(!event.target.classList.contains('button')) return;
+    const currentButton = document.querySelector(`button[data-type=${event.target.id}]`);
+
+     currentButton.classList.remove('clicked');
+    
 }
 
+window.addEventListener('mouseout',removeHighlight)
