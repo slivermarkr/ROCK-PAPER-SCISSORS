@@ -53,7 +53,7 @@ function game(e){
 
     let getPlayerChoice  = e.target.id;
     let roundResult = playRound(getPlayerChoice,getComputerChoice());
-    console.log(roundResult)
+    
     counterContainer.textContent = ` You Score: ${playerScore} || Computer Score: ${computerScore}`;
     resultDisplay.textContent = `${roundResult}`;
 
